@@ -1,0 +1,98 @@
+<html>
+<head>
+	<script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCSfC-KKmL-pw-c6PpqPUv3j0kiFizhUtc",
+    authDomain: "rlstats-594fd.firebaseapp.com",
+    databaseURL: "https://rlstats-594fd.firebaseio.com",
+    projectId: "rlstats-594fd",
+    storageBucket: "rlstats-594fd.appspot.com",
+    messagingSenderId: "223443638938"
+  };
+  firebase.initializeApp(config);
+  record="";
+  for(var a=0;a<=100;a++)
+  {
+firebase.database().ref('RLv1/' + a).once('value').then(function(snapshot) {
+	if(snapshot.val()!=null)
+	record=record+snapshot.val()+",";
+	console.log(snapshot.val())
+});
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script type="text/javascript">
+</script>
+</head>
+
+
+<body>
+<script type="text/javascript">
+		
+
+		window.onload = function() {
+
+setTimeout(function(){ console.log("WAITING");
+
+record=record.split(",");
+console.log(record)
+var config = {
+			type: 'line',
+			data: {
+				labels: record,
+				datasets: [{
+					label: 'v1',
+					backgroundColor: "#FF0000",
+					data: record,
+					fill: true,
+				}]
+			},
+			options: {
+				responsive: true,
+				title: {
+					display: true,
+					text: 'Reinforcing 2048 - Report'
+				},
+				tooltips: {
+					mode: 'index',
+					intersect: false,
+				},
+				hover: {
+					mode: 'nearest',
+					intersect: true
+				},
+				scales: {
+					xAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Max'
+						}
+					}],
+					yAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Value'
+						}
+					}]
+				}
+			}
+		};
+			var ctx = document.getElementById('myChart').getContext('2d');
+			window.myLine = new Chart(ctx, config);
+
+},2000);
+			
+		};
+
+
+</script>
+<canvas id="myChart">asd</canvas>
+</body>
+
+
+
+</html>

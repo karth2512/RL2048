@@ -685,13 +685,13 @@ timer();
 			{
 				same=false
 				if(c!=0)
-				reward+=Math.abs(temp*Math.pow(10,c));
+				reward+=Math.abs(temp*Math.pow(2,c));
 				else
 				reward+=temp*100;
 			}
 		}
 		if(same)
-		reward = -100000000000;
+		reward = -100;
 		if(isGameOver)
 		{
 		var max = Math.max.apply(null,current);
@@ -704,7 +704,7 @@ timer();
             record = [];
 		}
 		h2.innerHTML=parseInt(h2.innerHTML)+1
-			reward = -9999999999999999999999999999999;
+			reward = -999;
 			resetGame();
 			bind();
 		}

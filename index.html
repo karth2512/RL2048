@@ -620,6 +620,7 @@ timer();
 		spec.tderror_clamp = 1.0; // for robustness
 		spec.num_hidden_units = 500 // number of neurons in hidden layer
 		agent = new RL.DQNAgent(env, spec); 
+        var samec=0;
 	setInterval(function(){ // start the learning loop
 			var states=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 			var grid = document.getElementsByClassName("box");
@@ -644,6 +645,7 @@ timer();
 			agent.learn(getReward(prev,states)); // the agent improves its Q,policy,model, etc. reward is a float
 		}, 100);
 	var record = [];
+    var samerecord = [];
 	function saveAgent(Agent)
 	{
 		
@@ -651,7 +653,8 @@ timer();
 	}
 	function saveRecord()
 	{
-        firebase.database().ref('RLv1/'+log).set(record.join());
+        firebase.database().ref('RLv1-Max/'+log).set(record.join());
+        firebase.database().ref('RLv1-Same/'+log).set(samerecord.join());
         log=log+1;
         var h3 = document.getElementsByTagName('h3')[0]
         h3.innerHTML=log;
@@ -691,17 +694,22 @@ timer();
 			}
 		}
 		if(same)
-		reward = -10000;
+		{
+            reward = -10000;
+            samec+=1;
+        }
 		if(isGameOver)
 		{
 		var max = Math.max.apply(null,current);
 		record.push(max);
+        samerecord.push(samec);
 		var h2 = document.getElementsByTagName('h2')[0]
 		if(parseInt(h2.innerHTML)%10==0)
 		{
             saveAgent(agent);
             saveRecord();
             record = [];
+            samerecord =[];
 		}
 		h2.innerHTML=parseInt(h2.innerHTML)+1
 			reward = -99999;

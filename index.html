@@ -619,6 +619,7 @@ timer();
 		spec.learning_steps_per_iteration = 20;
 		spec.tderror_clamp = 1.0; // for robustness
 		spec.num_hidden_units = 500 // number of neurons in hidden layer
+
 		agent = new RL.DQNAgent(env, spec); 
         var samec=0;
 	setInterval(function(){ // start the learning loop
@@ -693,6 +694,7 @@ timer();
 				reward+=temp*100;
 			}
 		}
+        reward=0;
 		if(same)
 		{
             reward = -10000;
@@ -712,7 +714,7 @@ timer();
             samerecord =[];
 		}
 		h2.innerHTML=parseInt(h2.innerHTML)+1
-			reward = -99999;
+			reward = 0;
 			resetGame();
 			bind();
 		}

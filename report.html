@@ -13,12 +13,17 @@
   };
   firebase.initializeApp(config);
   record="";
+  samer="";
   for(var a=0;a<=100;a++)
   {
-firebase.database().ref('RLv1/' + a).once('value').then(function(snapshot) {
+firebase.database().ref('RLv1-Max/' + a).once('value').then(function(snapshot) {
 	if(snapshot.val()!=null)
 	record=record+snapshot.val()+",";
-	console.log(snapshot.val())
+});
+
+firebase.database().ref('RLv1-Same/' + a).once('value').then(function(snapshot) {
+	if(snapshot.val()!=null)
+	samer=samer+snapshot.val()+",";
 });
 }
 </script>
@@ -37,17 +42,27 @@ firebase.database().ref('RLv1/' + a).once('value').then(function(snapshot) {
 setTimeout(function(){ console.log("WAITING");
 
 record=record.split(",");
+samer=samer.split(",");
 console.log(record)
+console.log(samer)
 var config = {
 			type: 'line',
 			data: {
 				labels: record,
 				datasets: [{
-					label: 'v1',
+					label: 'Max',
 					backgroundColor: "#FF0000",
+					borderColor: "#FF0000",
 					data: record,
-					fill: true,
-				}]
+					fill: false,
+				},
+				{
+					label: 'Same',
+					backgroundColor: "#FFFF00",
+					borderColor: "#FFFF00",
+					data: samer,
+					fill: false,
+				},]
 			},
 			options: {
 				responsive: true,

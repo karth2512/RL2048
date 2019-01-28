@@ -643,7 +643,9 @@ timer();
 			}
 			//console.log(prev);
 			//console.log(states);
-			agent.learn(getReward(prev,states)); // the agent improves its Q,policy,model, etc. reward is a float
+            var rew=getReward(prev,states);
+            console.log(rew);
+			agent.learn(rew); // the agent improves its Q,policy,model, etc. reward is a float
 		}, 100);
 	var record = [];
     var samerecord = [];
@@ -697,7 +699,7 @@ timer();
         reward=0;
 		if(same)
 		{
-            reward = -10000;
+            reward = -10;
             samec+=1;
         }
 		if(isGameOver)

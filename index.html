@@ -495,7 +495,6 @@ Logged: <h3>0<h3>
             if (isCheating != -1) {
                 isCheating++;
                 if (isCheating == 10) {
-                    cheat();
                     return true;
                 }
             }
@@ -712,6 +711,7 @@ Logged: <h3>0<h3>
                     samerecord =[];
         		}
         		h2.innerHTML=parseInt(h2.innerHTML)+1
+                noChange=0;
         		resetGame();
         		bind();
     		}

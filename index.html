@@ -608,7 +608,7 @@ Logged: <h3>0<h3>
 
 		agent = new RL.DQNAgent(env, spec); 
 
-        firebase.database().ref('RLv1Agent/')on("value", function(snapshot)
+        firebase.database().ref('RLv1Agent/').on("value", function(snapshot)
         {
             console.log(snapshot.val());
         }, function (error) {

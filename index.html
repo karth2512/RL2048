@@ -228,16 +228,16 @@ Logged: <h3>0<h3>
         $(window).keydown(function (event) {
             if (!isGameOver) {
                 if (event.which == 37) {
-                    event.prevMatrixentDefault();
+                    event.preventDefault();
                     gameRun(dir.left);
                 } else if (event.which == 38) {
-                    event.prevMatrixentDefault();
+                    event.preventDefault();
                     gameRun(dir.up);
                 } else if (event.which == 39) {
-                    event.prevMatrixentDefault();
+                    event.preventDefault();
                     gameRun(dir.right);
                 } else if (event.which == 40) {
-                    event.prevMatrixentDefault();
+                    event.preventDefault();
                     gameRun(dir.down);
                 }
             }

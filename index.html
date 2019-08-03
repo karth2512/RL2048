@@ -607,11 +607,11 @@ Logged: <h3>0<h3>
 		spec.num_hidden_units = 500 // number of neurons in hidden layer
 
 		agent = new RL.DQNAgent(env, spec); 
-
         firebase.database().ref('RLv1Agent/').on("value", function(snapshot)
         {
-            console.log(snapshot.val());
-        }, function (error) {
+            agent.fromJSON(JSON.parse(snapshot.val());
+        }, 
+        function (error) {
             console.log("Error: " + error.code);
         });
 

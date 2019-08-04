@@ -1,7 +1,7 @@
 # Deep Q-network for learning to play 2048
 
--A value based reinforcement learning approach to learn to play the game 2048.
--Rules of the game can be found [here](https://en.wikipedia.org/wiki/2048_(video_game))
+- A value based reinforcement learning approach to learn to play the game 2048.
+- Rules of the game can be found [here](https://en.wikipedia.org/wiki/2048_(video_game))
 
 ## Intro
 1. The RL Agent consists of 16 state variables that denote the value of all the tiles at each position of the 4x4 grid.

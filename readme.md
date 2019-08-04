@@ -22,3 +22,5 @@ Rules of the game can be found [here](https://en.wikipedia.org/wiki/2048_(video_
 3. Rewarding system is based on the count of each tile value after a move.
 4. Epsilon is reduced manually based on performance
 
+##Result 
+- Coming Up Soon!

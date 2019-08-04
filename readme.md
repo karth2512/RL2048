@@ -20,3 +20,5 @@ Rules of the game can be found [here](https://en.wikipedia.org/wiki/2048_(video_
 1. The RL Agent consists of 16 state variables that denote the value of all the tiles at each position of the 4x4 grid.
 2. There are 4 moves that the agent can chose from : (swipe up,swipe down, swipe left, swipe right)
 3. Rewarding system is based on the count of each tile value after a move.
+4. Epsilon is reduced manually based on performance
+
